@@ -1,6 +1,7 @@
 from setuptools import setup
 from distutils.extension import Extension
 from Cython.Build import cythonize
+from Cython.Distutils import build_ext
 import numpy
 
 def readme():
@@ -9,7 +10,7 @@ def readme():
 
 
 setup(name='statr',
-      version='0.1.0',
+      version='0.1.0.dev5',
       description='Trustworthy statistics in Python',
       long_description=readme(),
       classifiers=[
@@ -22,21 +23,28 @@ setup(name='statr',
         'Topic :: Scientific/Engineering :: Mathematics'
       ],
       keywords='statr r statistics',
-      url='https://github.com/franiis/statr',
+      url='https://github.com/franiis/statr-python',
       author='Piotr Krzeszewski',
       author_email='krzeszewskipiotr@gmail.com',
       license='GPLv3',
       packages=['statr'],
       install_requires=[
+        "numpy>=1.14"
       ],
-      ext_modules = cythonize([Extension("statr", ["statr/statr_pyx.pyx"], include_dirs = [numpy.get_include(), "statr/lib/"])]),
+      ext_modules = [Extension(
+          name="statr", 
+          sources=["statr/statr.bycython.c"], 
+          include_dirs = [numpy.get_include(), "lib/"],
+          extra_objects=["lib/libstatr.a"])],
       test_suite='nose.collector',
       tests_require=['nose', 'nose-cover3'],
       include_package_data=True,
       python_requires='>=3, <4',
       zip_safe=False,
-      project_urls={  # Optional
-        'Bug Reports': 'https://github.com/franiis/statr/issues/',
-        'Source': 'https://github.com/franiis/statr/'
-    }
+      project_urls={
+        'Bug Reports': 'https://github.com/franiis/statr-python/issues/',
+        'Source': 'https://github.com/franiis/statr-python/'},
+      cmdclass = {
+        "build_ext": build_ext
+      }
 )

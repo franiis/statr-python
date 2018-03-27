@@ -1,1 +1,1 @@
-from statr import statr_pyx
+from . import statr

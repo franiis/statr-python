@@ -1,4 +1,8 @@
 
 
-cdef extern from "lib/distr/distr.h":
-    void runif(double *res, int nres, double *a, int na, double *b, int nb)
+cdef extern from "../lib/rng.h":
+    struct RNG_state_t:
+        pass
+
+cdef extern from "../lib/distr.h":
+    void runif(RNG_state_t **state, double a, double b)

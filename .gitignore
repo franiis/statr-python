@@ -9,6 +9,9 @@
 /*.egg
 
 # Custom ignores
+arch/*
+build/*
 __pycache__
 .Rhistory
 .vscode
+*.so

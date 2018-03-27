@@ -1,4 +1,0 @@
-cp /home/piotr/Projects/statr/build/libstatr.a statr/lib
-
-python setup.py build_ext --inplace
-
