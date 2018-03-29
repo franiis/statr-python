@@ -1,8 +1,13 @@
 
 
 cdef extern from "../lib/rng.h":
-    struct RNG_state_t:
+
+    ctypedef struct RNG_state_t:
         pass
 
+    RNG_state_t* create_RNG_state(unsigned int seed)
+    void delete_RNG_state(RNG_state_t *state)
+    
+
 cdef extern from "../lib/distr.h":
-    void runif(RNG_state_t **state, double a, double b)
+    double runif(RNG_state_t **state, double a, double b)

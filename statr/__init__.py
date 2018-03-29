@@ -1,1 +1,1 @@
-from . import statr
+from .statr import *

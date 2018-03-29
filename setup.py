@@ -10,7 +10,7 @@ def readme():
 
 
 setup(name='statr',
-      version='0.1.0.dev5',
+      version='0.1.0.dev6',
       description='Trustworthy statistics in Python',
       long_description=readme(),
       classifiers=[
@@ -37,7 +37,7 @@ setup(name='statr',
           include_dirs = [numpy.get_include(), "lib/"],
           extra_objects=["lib/libstatr.a"])],
       test_suite='nose.collector',
-      tests_require=['nose', 'nose-cover3'],
+      tests_require=['nose', 'nose-cover3', 'rpy2'],
       include_package_data=True,
       python_requires='>=3, <4',
       zip_safe=False,
